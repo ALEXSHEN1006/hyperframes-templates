@@ -1,0 +1,8 @@
+# Hyperframes tool state (contains local absolute paths — never commit)
+.hyperframes/
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/

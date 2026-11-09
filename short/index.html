@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Noto Sans CJK SC";
+        src: local("Noto Sans CJK SC");
+      }
+      /* ===== 品牌基线（三套模板共用，改配色改这里） ===== */
+      :root {
+        --ground: #101418;
+        --panel: #1b222b;
+        --ink: #f2f5f8;
+        --sub: #9fb2c3;
+        --accent: #ffb03a;
+        --accent2: #4cc2ff;
+        --font-display: "Noto Sans CJK SC", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0; width: 1080px; height: 1920px;
+        overflow: hidden; background: var(--ground);
+        font-family: var(--font-display);
+      }
+      #root { position: relative; width: 100%; height: 100%; }
+      .scene {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        padding: 120px 80px;
+      }
+      .kicker { color: var(--accent2); font-size: 40px; letter-spacing: 0.3em; margin-bottom: 56px; }
+      /* ===== 钩子页 ===== */
+      .hook { color: var(--ink); font-size: 168px; font-weight: 700; line-height: 1.15; text-align: center; }
+      .hook .hot { color: var(--accent); }
+      .hook-sub { color: var(--sub); font-size: 52px; margin-top: 64px; text-align: center; line-height: 1.5; }
+      /* ===== 要点页 ===== */
+      .bignum { color: var(--accent); font-size: 300px; font-weight: 700; line-height: 1; }
+      .p-title { color: var(--ink); font-size: 104px; font-weight: 700; margin-top: 48px; text-align: center; line-height: 1.25; }
+      .p-desc { color: var(--sub); font-size: 50px; margin-top: 44px; text-align: center; line-height: 1.55; max-width: 880px; }
+      .pbar { position: absolute; bottom: 110px; left: 50%; margin-left: -440px; width: 880px; height: 10px; background: #232c36; border-radius: 5px; overflow: hidden; }
+      .pbar .pfill { width: 100%; height: 100%; background: var(--accent2); transform-origin: left center; transform: scaleX(0); }
+      /* ===== 结论页 ===== */
+      .c-line1 { color: var(--ink); font-size: 118px; font-weight: 700; text-align: center; line-height: 1.25; }
+      .c-line2 { color: var(--accent); font-size: 84px; font-weight: 700; text-align: center; line-height: 1.4; margin-top: 48px; }
+      .endmark { color: var(--sub); font-size: 42px; margin-top: 110px; letter-spacing: 0.25em; }
+      .endmark span { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="26"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- ══════════ 文案区 1/5 · 钩子：换选题改这里 ══════════ -->
+      <section id="s1" class="scene clip" data-start="0" data-duration="4" data-track-index="0">
+        <div class="kicker" id="s1-kicker">AI 视频冷知识</div>
+        <div class="hook" id="s1-hook">AI 视频<br />为什么会<br /><span class="hot">崩脸？</span></div>
+        <div class="hook-sub" id="s1-sub">不是模型不行<br />是这三件事没做对</div>
+      </section>
+
+      <!-- ══════════ 文案区 2/5 · 要点一 ══════════ -->
+      <section id="s2" class="scene clip" data-start="4" data-duration="6" data-track-index="0">
+        <div class="bignum" id="n1">01</div>
+        <div class="p-title" id="t1">参考图太少</div>
+        <div class="p-desc" id="d1">只给一张定妆照，转头侧脸就没了依据，脸只能现编</div>
+        <div class="pbar"><div class="pfill" id="pf1"></div></div>
+      </section>
+
+      <!-- ══════════ 文案区 3/5 · 要点二 ══════════ -->
+      <section id="s3" class="scene clip" data-start="10" data-duration="6" data-track-index="0">
+        <div class="bignum" id="n2">02</div>
+        <div class="p-title" id="t2">提示词太飘</div>
+        <div class="p-desc" id="d2">只写「好看」，不写清五官、发型、年龄感，模型只能猜</div>
+        <div class="pbar"><div class="pfill" id="pf2"></div></div>
+      </section>
+
+      <!-- ══════════ 文案区 4/5 · 要点三 ══════════ -->
+      <section id="s4" class="scene clip" data-start="16" data-duration="6" data-track-index="0">
+        <div class="bignum" id="n3">03</div>
+        <div class="p-title" id="t3">镜头拖太长</div>
+        <div class="p-desc" id="d3">一镜到底越久，五官越往外漂，切短了反而稳</div>
+        <div class="pbar"><div class="pfill" id="pf3"></div></div>
+      </section>
+
+      <!-- ══════════ 文案区 5/5 · 结论：换结论改这里 ══════════ -->
+      <section id="s5" class="scene clip" data-start="22" data-duration="4" data-track-index="0">
+        <div class="c-line1" id="c1">崩脸不是玄学</div>
+        <div class="c-line2" id="c2">是参考不够<br />要求不清</div>
+        <div class="endmark" id="s5-end">魔力喵 <span>AIGC</span> 工作室</div>
+      </section>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      // 钩子 0–4s：快进场
+      tl.fromTo("#s1-kicker", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.15);
+      tl.fromTo("#s1-hook", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.35);
+      tl.fromTo("#s1-sub", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.9);
+      // 三点快切：每点 数字砸入 → 标题 → 说明
+      const points = [
+        { n: "#n1", t: "#t1", d: "#d1", at: 4 },
+        { n: "#n2", t: "#t2", d: "#d2", at: 10 },
+        { n: "#n3", t: "#t3", d: "#d3", at: 16 }
+      ];
+      points.forEach((p) => {
+        tl.fromTo(p.n, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, p.at + 0.15);
+        tl.fromTo(p.t, { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, p.at + 0.5);
+        tl.fromTo(p.d, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, p.at + 0.9);
+      });
+      points.forEach((p, i) => {
+        tl.fromTo("#pf" + (i + 1), { scaleX: 0 }, { scaleX: 1, duration: 5.5, ease: "none" }, p.at + 0.3);
+      });
+      // 结论 22–26s
+      tl.fromTo("#c1", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 22.2);
+      tl.fromTo("#c2", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.7);
+      tl.fromTo("#s5-end", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 23.4);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
